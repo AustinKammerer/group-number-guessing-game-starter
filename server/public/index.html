@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,7 +11,38 @@
   <link rel="stylesheet" href="styles/styles.css">
   <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
 </head>
+
 <body>
-    <h1>YOUR GAME HERE!</h1>
+  <h1>YOUR GAME HERE!</h1>
+  <div id="winnerContainer">
+
+  </div>
+  <div id="inputsContainer">
+    <input type="text" id='inputIsiah' placeholder="Isiah's Guess">
+    <input type="text" id='inputRonald' placeholder="Ronalds's Guess">
+    <input type="text" id='inputAustin' placeholder="Austin's Guess">
+    <input type="text" id='inputKatherine' placeholder="Katherine's Guess">
+    <input type="text" id='inputChaoching' placeholder="Chaoching's Guess">
+    <button id='submitGuesses'>GUESS</button>
+  </div>
+
+  <div id="tableContainer">
+    <table>
+      <thead>
+        <tr>
+          <th>Round</th>
+          <th>Isiah</th>
+          <th>Ronald</th>
+          <th>Austin</th>
+          <th>Katherine</th>
+          <th>Chaoching</th>
+        </tr>
+      </thead>
+      <tbody id="tableOnDOM">
+
+      </tbody>
+    </table>
+  </div>
 </body>
+
 </html>
