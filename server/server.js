@@ -44,3 +44,7 @@ function checkGuesses(request) {
   guessResults.push(data);
   console.log(guessResults);
 }
+
+app.get("/submission", (req, res) => {
+  res.send(guessResults);
+});

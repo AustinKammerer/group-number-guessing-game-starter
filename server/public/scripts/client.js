@@ -30,5 +30,17 @@ function sendGuess() {
         },
       ],
     },
+  }).then(function (response) {
+    renderTable();
+  });
+}
+
+// function to GET processes guesses and add them to the DOM
+function renderTable() {
+  $.ajax({
+    method: "GET",
+    url: "/submission",
+  }).then(function (response) {
+    console.log(response);
   });
 }
