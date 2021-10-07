@@ -19,11 +19,28 @@ function randNum(min, max) {
   return Math.floor(Math.random() * (1 + max - min) + min);
 }
 
-let guesses = [];
+let guessResults = [];
 
 let winningNum = randNum(1, 25);
+console.log(winningNum);
 
 app.post("/submission", (req, res) => {
   console.log(req.body);
+  checkGuesses(req.body);
   res.sendStatus(201);
 });
+
+function checkGuesses(request) {
+  let data = request.data;
+  for (let i = 0; i < data.length; i++) {
+    if (Number(data[i].guess) === winningNum) {
+      data[i].result = "Correct";
+    } else if (Number(data[i].guess) < winningNum) {
+      data[i].result = "Too Low";
+    } else if (Number(data[i].guess) > winningNum) {
+      data[i].result = "Too High";
+    }
+  }
+  guessResults.push(data);
+  console.log(guessResults);
+}
