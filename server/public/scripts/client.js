@@ -32,6 +32,11 @@ function sendGuess() {
     },
   }).then(function (response) {
     renderTable();
+    $("#inputIsiah").val(``);
+    $("#inputRonald").val(``);
+    $("#inputAustin").val(``);
+    $("#inputKatherine").val(``);
+    $("#inputChaoching").val(``);
   });
 }
 
@@ -42,5 +47,15 @@ function renderTable() {
     url: "/submission",
   }).then(function (response) {
     console.log(response);
+    $("#tableOnDOM").empty();
+    for (let i = 0; i < response.length; i++) {
+      let row = $(`<tr><td>${i + 1}</td></tr>`);
+      for (let guess of response[i]) {
+        row.append(`
+          <td>${guess.guess}: ${guess.result}</td>
+        `);
+      }
+      $("#tableOnDOM").append(row);
+    }
   });
 }
