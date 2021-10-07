@@ -2,8 +2,11 @@ $(document).ready(handleReady);
 
 function handleReady() {
   console.log("jquery is loaded!");
+  resetGame();
   // click handler for submit button
   $("#submitBtn").on("click", sendGuess);
+  // click listener for reset button
+  $("#resetBtnContainer").on("click", "#resetBtn", resetGame);
 }
 
 // function to sent POST request with guesses
@@ -54,8 +57,24 @@ function renderTable() {
         row.append(`
           <td>${guess.guess}: ${guess.result}</td>
         `);
+        if (guess.result === "Correct") {
+          makeResetBtn();
+        }
       }
       $("#tableOnDOM").append(row);
     }
   });
+}
+
+function makeResetBtn() {
+  $("#resetBtnContainer").empty();
+  $("#resetBtnContainer").append(`<button id="resetBtn">RESET</button>`);
+}
+// come back to this
+function resetGame() {
+  $.ajax({
+    method: "POST",
+    url: "/reset",
+    data: {},
+  }).then(renderTable());
 }

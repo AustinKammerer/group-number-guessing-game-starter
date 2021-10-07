@@ -48,3 +48,9 @@ function checkGuesses(request) {
 app.get("/submission", (req, res) => {
   res.send(guessResults);
 });
+
+app.post("/reset", (req, res) => {
+  guessResults = [];
+  winningNum = randNum(1, 25);
+  res.sendStatus(201);
+});
