@@ -21,8 +21,8 @@ function randNum(min, max) {
 
 let guessResults = [];
 
-let winningNum = randNum(1, 25);
-console.log(winningNum);
+let winningNum = 0;
+// console.log(winningNum);
 
 app.post("/submission", (req, res) => {
   console.log(req.body);
@@ -52,5 +52,7 @@ app.get("/submission", (req, res) => {
 app.post("/reset", (req, res) => {
   guessResults = [];
   winningNum = randNum(1, 25);
+  console.log(winningNum);
   res.sendStatus(201);
 });
+// left off here

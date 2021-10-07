@@ -59,6 +59,8 @@ function renderTable() {
         `);
         if (guess.result === "Correct") {
           makeResetBtn();
+          $("#winnerContainer").empty();
+          $("#winnerContainer").append(`<h2></h2>`);
         }
       }
       $("#tableOnDOM").append(row);
