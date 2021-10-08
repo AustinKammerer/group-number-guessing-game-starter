@@ -2,6 +2,7 @@ $(document).ready(handleReady);
 
 function handleReady() {
   console.log("jquery is loaded!");
+  let interval;
   resetGame();
   // click handler for submit button
   $("#submitBtn").on("click", sendGuess);
@@ -74,6 +75,9 @@ function renderTable() {
               `<h2>The Winner Is: <span class="winPerson">${guess.name}</span></h2>`
             )
             .addClass("attention");
+          interval = setInterval(function () {
+            $("#winnerContainer").toggleClass("blink");
+          }, 500);
         }
       }
       $("#tableOnDOM").append(row);
@@ -97,5 +101,8 @@ function resetGame() {
     $("#winnerContainer").empty();
     renderTable();
     $("#winnerContainer").removeClass("attention");
+    clearInterval(interval);
   });
 }
+
+// function makeBlink()

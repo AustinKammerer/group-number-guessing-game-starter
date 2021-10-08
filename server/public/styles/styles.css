@@ -12,7 +12,9 @@
   width: max-content;
   text-align: center;
 }
-.winPerson {
+.blink {
+  opacity: 0;
+  transition: opacity 0.1s;
 }
 
 h1 {
