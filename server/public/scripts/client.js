@@ -17,18 +17,23 @@ function sendGuess() {
     data: {
       data: [
         {
+          name: `Isiah`,
           guess: $("#inputIsiah").val(),
         },
         {
+          name: `Ronald`,
           guess: $("#inputRonald").val(),
         },
         {
+          name: `Austin`,
           guess: $("#inputAustin").val(),
         },
         {
+          name: `Katherine`,
           guess: $("#inputKatherine").val(),
         },
         {
+          name: `Chaoching`,
           guess: $("#inputChaoching").val(),
         },
       ],
@@ -51,16 +56,24 @@ function renderTable() {
   }).then(function (response) {
     console.log(response);
     $("#tableOnDOM").empty();
+    $("#resetBtnContainer").empty();
+    $("#winnerContainer").empty();
     for (let i = 0; i < response.length; i++) {
       let row = $(`<tr><td>${i + 1}</td></tr>`);
       for (let guess of response[i]) {
         row.append(`
-          <td>${guess.guess}: ${guess.result}</td>
+          <td${guess.result === "Correct" ? ' class="winner"' : ""}>${
+          guess.guess
+        }: ${guess.result}</td$>
         `);
         if (guess.result === "Correct") {
           makeResetBtn();
-          $("#winnerContainer").empty();
-          $("#winnerContainer").append(`<h2></h2>`);
+
+          $("#winnerContainer")
+            .append(
+              `<h2>The Winner Is: <span class="winPerson">${guess.name}</span></h2>`
+            )
+            .addClass("attention");
         }
       }
       $("#tableOnDOM").append(row);
@@ -70,7 +83,9 @@ function renderTable() {
 
 function makeResetBtn() {
   $("#resetBtnContainer").empty();
-  $("#resetBtnContainer").append(`<button id="resetBtn">RESET</button>`);
+  $("#resetBtnContainer").append(
+    `<button id="resetBtn" class="btn btn-danger">RESET</button>`
+  );
 }
 // come back to this
 function resetGame() {
@@ -78,5 +93,9 @@ function resetGame() {
     method: "POST",
     url: "/reset",
     data: {},
-  }).then(renderTable());
+  }).then(function () {
+    $("#winnerContainer").empty();
+    renderTable();
+    $("#winnerContainer").removeClass("attention");
+  });
 }

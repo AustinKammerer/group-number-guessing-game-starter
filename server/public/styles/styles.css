@@ -1,0 +1,26 @@
+.winner {
+  background-color: green !important;
+}
+
+#winnerContainer {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 40%;
+  margin-left: auto;
+  margin-right: auto;
+  width: max-content;
+  text-align: center;
+}
+.winPerson {
+}
+
+h1 {
+  text-align: center;
+}
+
+.attention {
+  padding: 50px;
+  border: 4px solid gold;
+  background-color: gold;
+}
